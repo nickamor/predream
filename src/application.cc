@@ -1,4 +1,5 @@
 #include "application.h"
+#include <string>
 
 template <typename... Args>
 void SafeSDLCall(int func(Args...), Args... args) throw(SdlRuntimeError) {
@@ -9,10 +10,20 @@ void SafeSDLCall(int func(Args...), Args... args) throw(SdlRuntimeError) {
   }
 }
 
+class TtfFont {
+public:
+  template <typename... Args>
+  TtfFont(TTF_Font *func(Args...), Args... args) throw(SdlRuntimeError) {
+
+  }
+  ~TtfFont();
+  
+};
+
 Application::Application() throw(SdlRuntimeError) {
   SafeSDLCall(SDL_CreateWindowAndRenderer, width, height, window_flags, &window, &renderer);
   SafeSDLCall(TTF_Init);
-  font = TTF_OpenFont("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 14);
+  font = TTF_OpenFont("resources/fonts/Lato/Lato-Regular.ttf", 14);
   
   if (font == 0) {
     throw SdlRuntimeError();

@@ -1,5 +1,5 @@
-CXXFLAGS := $(CXXFLAGS)-std=c++11 $(shell sdl2-config --cflags) -Iinclude/
-LDFLAGS  := $(LDFLAGS) $(shell sdl2-config --libs) -lSDL2_ttf
+CXXFLAGS := $(CXXFLAGS)-std=c++14 $(shell sdl2-config --cflags) -Iinclude/
+LDFLAGS  := $(LDFLAGS) $(shell sdl2-config --libs) -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2_net
 
 .PHONY: all clean
 
